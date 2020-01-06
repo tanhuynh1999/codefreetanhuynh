@@ -1,0 +1,59 @@
+﻿@using ChiaSeCode_TH.Models;
+@model List<TinTuc>
+@{
+    ViewBag.Title = "LocTheoTheLoaiTinTuc";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+
+
+<!--Menu-->
+@Html.Action("MenuTinTuc", "HienThi")
+<!--//Menu-->
+<!--Thanh công cụ-->
+@Html.Action("ThanhCongCu", "HienThi")
+<!--//Thanh công cụ-->
+<!--Giao diện trang chủ-->
+<div class="content_middle">
+    <div class="container"><br />
+        <center>@Html.Action("DanhSachTheLoai", "TinTuc")</center>
+        <div class="content_middle_box">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="grid1">
+                        <a href="@Url.Action("XemChiTietTinTuc", "TinTuc", new {@matintuc = item.MaTinTuc })">
+                            <div class="index_img1"><img src="@Url.Content("~/HinhAnh/"+item.AnhTinTuc)" class="img-responsive" alt="" style="width: 100%; height: 220px" /></div>
+                        </a>
+                        <div class="inner_wrap1">
+                            <ul class="item_module">
+                                <li class="module_right">
+                                    <h5>@item.TenTinTuc</h5>
+                                    <p>
+                                        <b><i class="fa fa-eye">&nbsp;</i>@item.LuotXemTinTuc</b>
+                                        <b>@item.NgayDangTinTuc</b>
+                                    </p>
+                                    <a href="#" class="content_btn">....Xem</a>
+                                </li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+            @Html.Action("TrangChu2", "HienThi")
+            <div class="top_grid wow fadeInRight" data-wow-delay="0.4s">
+                @Html.Action("TatCaCodeWebsite", "LocCode")
+                <div class="clearfix"> </div>
+                @Html.Action("TatCaCodeGame", "LocCode")
+                <div class="clearfix"> </div>
+                @Html.Action("TatCaCodeUngDung", "LocCode")
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        @Html.Action("ChanTK", "HienThi")
+    </div>
+</div>
+@Html.Action("ChanTrang", "HienThi")
+

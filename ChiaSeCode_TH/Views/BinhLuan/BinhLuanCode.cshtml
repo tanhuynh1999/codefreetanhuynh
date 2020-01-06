@@ -1,0 +1,139 @@
+﻿@using ChiaSeCode_TH.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<BinhLuan>
+@{
+    ViewBag.Title = "BinhLuanCode";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <section class="comment-list">
+                @using (Html.BeginForm("BinhLuan", "BinhLuan", FormMethod.Post))
+                {
+                    <h2 class="page-header">Bình luận</h2>
+
+                    if (Session["NguoiDung"] != null)
+                    {
+                        <input type="text" name="NoiDungBinhLuan" style="width: 100%; height: 50px" class="form-control" /><br />
+                        <input type="submit" value="Comment" class="btn btn-success" min="50" required />
+                    }
+                    else if (Session["Admin"] != null)
+                    {
+                        <a class="btn btn-danger">Quản lý bình luận</a>
+                    }
+                    else
+                    {
+                        <a href="#" data-toggle="modal" data-target="#myModal"><input type="submit" value="Đăng nhập để bình luận!" class="btn btn-success" /></a>
+                    }
+                    <br /><br />
+                    <!-- First Comment -->
+                }
+                <br />
+                <table class="table">
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <article class="row">
+                                    <div class="col-md-1 col-sm-1 hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                                            <figcaption class="text-center">@item.NguoiDung.TenHienThi</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-10 col-sm-7">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="comment-user"><i class="fa fa-user"></i> @item.NguoiDung.TenHienThi</div>
+                                                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Ngày giờ đăng: @item.NgayDang</time>
+                                                </header>
+                                                <div class="comment-post">
+                                                    <p>
+                                                        @Html.DisplayFor(modelItem => item.NoiDungBinhLuan)
+                                                    </p>
+                                                </div>
+                                                <p class="text-right"><a data-toggle="collapse" data-target="#@item.MaBinhLuan" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> Trả lời</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <div class="pos-f-t">
+                                    <div class="collapse" id="@item.MaBinhLuan">
+                                        <div class="bg-dark p-4">
+                                            @foreach (var item2 in item.TraLoiBinhLuans)
+                                            {
+                                                <article class="row">
+                                                    <div class="col-md-1 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+                                                        <figure class="thumbnail">
+                                                            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                                                            <figcaption class="text-center">@item2.NguoiDung.TenHienThi</figcaption>
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-7">
+                                                        <div class="panel panel-default arrow left">
+                                                            <div class="panel-body">
+                                                                <header class="text-left">
+                                                                    <div class="comment-user"><i class="fa fa-user"></i>@item2.NguoiDung.TenHienThi</div>
+                                                                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Ngày giờ đăng: @item2.NgayTraLoiBinhLuan</time>
+                                                                </header>
+                                                                <div class="comment-post">
+                                                                    <p>
+                                                                        @item2.NoiDungTraLoiBinhLuan
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                                <br />
+                                            }
+                                            <br />
+                                            @using (Html.BeginForm("TraLoi", "BinhLuan", FormMethod.Post))
+                                            {
+                                                if (Session["NguoiDung"] != null)
+                                                {
+                                                    <input type="hidden" name="idtl" value="@item.MaBinhLuan" />
+                                                    <input type="text" name="NoiDungTraLoiBinhLuan" style="margin-left:5%; width: 96%; height: 50px" min="50" required class="form-control" placeholder="Nhập nội dung trả lời" />
+                                                }
+                                                if (Session["Admin"] != null)
+                                                {
+
+                                                }
+                                                else
+                                                {
+                                                    
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+                <center>
+                    <div>
+                        @*PageNumber @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+                        @Html.PagedListPager(Model, Page => Url.Action("BinhLuan", new { Page = Page }))
+                    </div>
+                </center>
+
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Second Comment Reply -->
+
+
+
+
+
+

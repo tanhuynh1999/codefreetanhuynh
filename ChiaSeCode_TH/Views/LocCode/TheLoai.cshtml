@@ -1,0 +1,12 @@
+﻿@using ChiaSeCode_TH.Models;
+@model List<TheLoai>
+
+    <div class="btn-group" role="group" aria-label="Basic example" style="margin-left: 2%">
+
+        @foreach (var item in Model)
+        {
+        <button type="button" class="btn btn-danger"><a href="@Url.Action("LocTheoTheLoai", "LocCode", new {@matheloai = item.MaTheLoai })" style="color: white">@item.TenTheLoai</a></button>
+        }
+        
+    </div>
+

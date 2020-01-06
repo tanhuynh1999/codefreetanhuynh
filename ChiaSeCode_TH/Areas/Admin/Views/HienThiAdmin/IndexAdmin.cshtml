@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "IndexAdmin";
+    Layout = "~/Areas/Admin/Views/LayoutAdmin/LayoutAdmin.cshtml";
+}
+
+    <div class="wthree_agile_admin_info">
+        <!-- /w3_agileits_top_nav-->
+        <!-- /nav-->
+        @Html.Action("MenuAD", "HienThiAdmin")
+        <div class="clearfix"></div>
+        <!-- //w3_agileits_top_nav-->
+        <!-- /inner_content-->
+        <div class="inner_content">
+            <!-- /inner_content_w3_agile_info-->
+            <div class="inner_content_w3_agile_info">
+                <!-- /agile_top_w3_grids-->
+                <div class="agile_top_w3_grids">
+                    <ul class="ca-menu">
+                        @Html.Action("MenuChon", "HienThiAdmin")
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+
+                <div class="prograc-blocks_agileits">
+                    <div class="col-md-6 fallowers_agile agile_info_shadow">
+                        <h3 class="w3_inner_tittle two">Recent Followers</h3>
+                        <div class="work-progres">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Project</th>
+                                            <th>Manager</th>
+
+                                            <th>Status</th>
+                                            <th>Progress</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Face book</td>
+                                            <td>Malorum</td>
+
+                                            <td><span class="label label-danger">in progress</span></td>
+                                            <td><span class="badge badge-info">50%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Twitter</td>
+                                            <td>Evan</td>
+
+                                            <td><span class="label label-success">completed</span></td>
+                                            <td><span class="badge badge-success">100%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Google</td>
+                                            <td>John</td>
+
+                                            <td><span class="label label-warning">in progress</span></td>
+                                            <td><span class="badge badge-warning">75%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>LinkedIn</td>
+                                            <td>Danial</td>
+
+                                            <td><span class="label label-info">in progress</span></td>
+                                            <td><span class="badge badge-info">65%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Tumblr</td>
+                                            <td>David</td>
+
+                                            <td><span class="label label-warning">in progress</span></td>
+                                            <td><span class="badge badge-danger">95%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Tesla</td>
+                                            <td>Mickey</td>
+
+                                            <td><span class="label label-info">in progress</span></td>
+                                            <td><span class="badge badge-success">95%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- //agile_top_w3_grids-->
+                <!-- /w3ls_agile_circle_progress-->
+                <!-- /w3ls_agile_circle_progress-->
+                <!-- /chart_agile-->
+                <!--/prograc-blocks_agileits-->
+                <!--//prograc-blocks_agileits-->
+            </div>
+            <!-- //inner_content_w3_agile_info-->
+        </div>
+        <!-- //inner_content-->
+    </div>
+

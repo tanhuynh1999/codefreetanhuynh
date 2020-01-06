@@ -1,0 +1,114 @@
+﻿@model ChiaSeCode_TH.Models.Code
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/LayoutAdmin/LayoutAdmin.cshtml";
+}
+@Html.Action("MenuAD", "HienThiAdmin")
+<a href="#Xem" class="btn btn-danger" style="z-index: 1000; margin-top:5%; width:20%; margin-left: 2%"><b>THÊM</b></a>
+<iframe src="/Admin/Codes/Index" style="width: 100%; height: 600px; margin-top: 1%"></iframe>
+<div id="Xem" style="margin-top: 10%">
+    @using (Html.BeginForm("Create", "Codes", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal" style="margin-top: -10%" href="#top">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div>
+                <div class="form-group" style="width:50%; float: left">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-code-branch">&nbsp;</i>Tiêu đề chính<b style="color: red;">*</b></b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenMaCode, new { htmlAttributes = new { @class = "form-control", required = false } })
+                        @Html.ValidationMessageFor(model => model.TenMaCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="width:50%; float: right">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-image">&nbsp;</i>Ảnh code<b style="color: red;">*</b></b>
+                    <div class="col-md-10">
+                        <input type="file" name="fileUpload" class="form-control" required />
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group" style="width:50%; float: left">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-eye">&nbsp;</i>Lượt xem ảo</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LuotXem, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LuotXem, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="width:50%; float: right">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-upload">&nbsp;</i>Lượt tải ảo</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LuotTai, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LuotTai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group" style="width:50%; float: left">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fas fa-align-justify">&nbsp;</i>Danh mục</b>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaDanhMuc", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="width:50%; float: right">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fas fa-align-justify">&nbsp;</i>Phân loại</b>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaTheLoai", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaTheLoai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group" style="width:50%; float: left">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fas fa-link">&nbsp;</i>Link Dowload</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LinkTai, new { htmlAttributes = new { @class = "form-control", required = false } })
+                        @Html.ValidationMessageFor(model => model.LinkTai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" style="width:50%; float: right">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-user">&nbsp;</i>Người dùng tùy chọn</b>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaNguoiDung", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaNguoiDung, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group" style="width:50%; float: left">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fas fa-cog">&nbsp;</i>Nội dung cài đặt</b>
+                    <div class="col-md-10">
+                        <textarea class="ckeditor" name="NoiDungCaiDat">
+
+                    </textarea>
+                    </div>
+                </div>
+                <div class="form-group" style="width:50%; float: right">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fas fa-file-alt">&nbsp;</i>Nội dung code</b>
+                    <div class="col-md-10">
+                        <textarea class="ckeditor" name="NoiDungCode">
+
+                    </textarea>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group container">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thêm" class="btn btn-danger" style="width: 50%; margin-left: 30%" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

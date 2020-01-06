@@ -1,0 +1,51 @@
+﻿<div class="offering">
+    <h2>Code đảm bảo chất lượng nhất từ các thành viên</h2>
+    <h3>Đã được admin thông qua kiểm duyệt</h3>
+    <ul class="icons wow fadeInUp" data-wow-delay="0.4s">
+        <li><a href="/HienThi/Index"><i class="icon1"> </i></a><span class="one"> </span></li>
+        <li><a href=""><i class="icon2"> </i></a><span class="two"> </span></li>
+        <li><i class="icon3"> </i><span class="three"> </span></li>
+        <li><i class="icon4"> </i><span class="four"> </span></li>
+        <li><i class="icon5"> </i></li>
+    </ul>
+    <div class="real">
+        <h4>Reality</h4>
+        <div class="col-sm-6">
+            <ul class="service_grid">
+                <i class="s2"> </i>
+                <li class="desc1 wow fadeInRight" data-wow-delay="0.4s">
+                    <p>
+                        <h2>Thống kê website</h2>
+                        <ul style="list-style: none">
+                            <li><b><i class="fas fa-file-code">&nbsp;</i>Tổng code: <span style="color: green">@Html.Action("DemCode", "Dem")</span></b></li>
+                            <li><b><i class="fas fa-gamepad">&nbsp;</i>Code Game: <span style="color: green">@Html.Action("DemCodeGame", "Dem")</span></b></li>
+                            <li><b><i class="fab fa-windows">&nbsp;</i>Code App Windows: <span style="color: green">@Html.Action("DemCodeAppWindow", "Dem")</span></b></li>
+                            <li><b><i class="fas fa-mobile">&nbsp;</i>Code Mobile: <span style="color: green">@Html.Action("DemCodeAppMobile", "Dem")</span></b></li>
+                            <li><b><i class="fab fa-chrome">&nbsp;</i>Code Website: <span style="color: green">@Html.Action("DemCodeWebsite", "Dem")</span></b></li>
+                            <li><b><i class="fa fa-newspaper">&nbsp;</i>Tổng tin tức: <span style="color: green">0</span></b></li>
+                        </ul>
+                    </p>
+                </li>
+                <div class="clearfix"> </div>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <ul class="service_grid">
+                <i class="s2"> </i>
+                <li class="desc1 wow fadeInRight" data-wow-delay="0.4s">
+                    <h2>Thống kê người dùng</h2>
+                    @{
+                        HttpApplicationState Tk = HttpContext.Current.ApplicationInstance.Application;
+                    }
+                <b><i class="fa fa-user">&nbsp;Tổng lượt truy cập:</i> @Tk["Luot_truy_cap"]</b><br />
+                    @{
+                        HttpApplicationState ol = HttpContext.Current.ApplicationInstance.Application;
+                    }
+                <b><i class="fas fa-blog">&nbsp;Số người online:</i>@Tk["So_nguoi_online"]</b>
+                </li>
+                <div class="clearfix"> </div>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

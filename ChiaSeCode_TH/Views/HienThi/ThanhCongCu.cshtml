@@ -1,0 +1,99 @@
+﻿@using ChiaSeCode_TH.Models;
+@model NguoiDung
+@{
+    NguoiDung ses = (NguoiDung)Session["NguoiDung"];
+    NguoiDung sesad = (NguoiDung)Session["Admin"];
+}
+@if (ses != null)
+{
+    <div class="content_top" style="background-color: black;">
+        <div class="container">
+            <div class="col-md-4 bottom_nav">
+                <div class="content_menu">
+                    <ul>
+                        <li class="active"><a href="/LocCode/CodeXemNhieu">XEM NHIỀU</a></li>
+                        <li class="active"><a href="/LocCode/CodeTaiNhieu">TẢI NHIỀU</a></li>
+                        <li class="active"><a href="/LocCode/CodeMoi">MỚI</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 content_dropdown1">
+                <div class="content_dropdown">
+                    <a href="/DangBai/ChiaSeCode" class="btn btn-default"><b><i class="fas fa-share-square">&nbsp;</i>Chia sẻ code</b></a>
+                </div>
+                <div class="content_dropdown">
+                    <a href="#" class="btn btn-default"><b><i class="fas fa-share-square">&nbsp;</i>Đã chia sẻ: @Html.Action("DaChiaSe", "QLCode", new { @manguoidung = ses.MaNguoiDung }) code</b></a>
+                </div>
+            </div>
+            <div class="col-md-4 filter_grid">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-user">&nbsp;</i>TT cá nhân</button>
+                    <button type="button" class="btn btn-default"><a href="@Url.Action("QLCode","QLCode", new {@manguoidung = ses.MaNguoiDung })"><i class="fa fa-file-code">&nbsp;</i>Quản lý</a></button>
+                    <button type="button" class="btn btn-default"><i class="fas fa-signal">&nbsp;</i>Thống kê</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @Html.Action("ThongTinCaNhan", "ThongTinCaNhan")
+}
+else if (sesad != null)
+{
+    <div class="content_top" style="background-color: black;">
+        <div class="container">
+            <div class="col-md-4 bottom_nav">
+                <div class="content_menu">
+                    <ul>
+                        <li class="active"><a href="/LocCode/CodeXemNhieu">XEM NHIỀU</a></li>
+                        <li class="active"><a href="/LocCode/CodeTaiNhieu">TẢI NHIỀU</a></li>
+                        <li class="active"><a href="/LocCode/CodeMoi">MỚI</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 content_dropdown1">
+                <div class="content_dropdown">
+                    <a href="/Admin/Codes/Create" class="btn btn-default"><b><i class="fas fa-code-branch">&nbsp;</i>Quản lý code</b></a>
+                </div>
+                <div class="content_dropdown">
+                    <a href="/Admin/NguoiDungs/Create" class="btn btn-default"><b><i class="fa fa-user">&nbsp;</i>Quản lý người dùng</b></a>
+                </div>
+            </div>
+            <div class="col-md-4 filter_grid">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-default"><a href="/Admin/TinTucs/Create" style="text-decoration: none"><i class="fa fa-newspaper">&nbsp;</i>QL tin tức</a></button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-align-justify">&nbsp;</i><a href="/Admin/HienThiAdmin/DanhMucTheLoai" style="text-decoration: none">QL DM - PL</a></button>
+                    <button type="button" class="btn btn-success"><i class="fab fa-artstation">&nbsp;</i><a href="/Admin/HienThiAdmin/IndexAdmin" style="text-decoration: none;color: white ">QUẢN LÝ</a></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="content_top" style="background-color: black;">
+        <div class="container">
+            <div class="col-md-4 bottom_nav">
+                <div class="content_menu">
+                    <ul>
+                        <li class="active"><a href="/LocCode/CodeXemNhieu">XEM NHIỀU</a></li>
+                        <li class="active"><a href="/LocCode/CodeTaiNhieu">TẢI NHIỀU</a></li>
+                        <li class="active"><a href="/LocCode/CodeMoi">MỚI</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 content_dropdown1">
+                <div class="content_dropdown">
+
+                </div>
+                <div class="content_dropdown">
+
+                </div>
+            </div>
+            <div class="col-md-4 filter_grid">
+
+                
+            </div>
+        </div>
+    </div>
+}

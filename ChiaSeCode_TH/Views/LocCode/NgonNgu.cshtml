@@ -1,0 +1,11 @@
+﻿@using ChiaSeCode_TH.Models;
+@model List<DanhMuc>
+
+    <div class="btn-group" role="group" aria-label="Basic example" style="margin-left: 2%">
+        @foreach (var item in Model)
+        {
+            <button type="button" class="btn btn-default"><a href="@Url.Action("LocTheoNgonNgu", "LocCode", new {@madanhmuc = item.MaDanhMuc })">@item.TenDanhMuc</a></button>
+        }
+        <button type="button" class="btn btn-danger"><a href="/LocCode/CodeMoi" style="color: white; text-decoration: none">Tất cả</a></button>
+    </div>
+<br />

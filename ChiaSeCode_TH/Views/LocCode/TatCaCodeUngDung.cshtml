@@ -1,0 +1,42 @@
+﻿@using ChiaSeCode_TH.Models;
+@model List<Code>
+<br />
+<center><h3 style="color: green; font-weight: bold">Code ứng dụng nổi bật</h3></center>
+<br />
+@foreach (var item in Model)
+{
+    <div class="col-md-3" style="margin-top: 1%;">
+        <div class="grid1">
+            <a href="@Url.Action("XemChiTiet", "XemChiTiet", new {@macode = item.MaCode })">
+                <div class="view view-first">
+                    <div class="index_img1"><img src="@Url.Content("~/HinhAnh/"+item.HinhAnh)" class="img-responsive" alt="" style="width: 100%; height: 160px" /></div>
+                    <div class="mask">
+                        <div class="info"><i class="search"> </i> Xem chi tiết</div>
+                        <ul class="mask_img">
+                            <li class="star"><img src="~/Content/Layout/images/star.png" alt="" /></li>
+                            <li class="set"><img src="~/Content/Layout/images/set.png" alt="" /></li>
+                            <div class="clearfix"> </div>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+            <div style="margin-top: 1%">
+                <div style="background-color: #4267b2; width: 49%; height: 30px;float: left;">
+                    <span><i class="fa fa-eye" style="font-size: 15px; color: white; margin-top: 6%; margin-left: 20%">&nbsp;@item.LuotXem</i></span>
+                </div>
+                <div style="background-color: #4267b2; width: 49%; height: 30px; float: right;">
+                    <span><i class="fa fa-upload" style="font-size: 15px; color: white; margin-top: 6%; margin-left: 20%">&nbsp;@item.LuotTai</i></span>
+                </div>
+            </div>
+            <div class="inner_wrap" style="width: 100%; height: 160px">
+                <b>@item.TheLoai.TenTheLoai</b>
+                <h3 style="color: saddlebrown; font-weight: bold">@item.TenMaCode</h3>
+                <ul class="star1">
+                    <h4 class="yellow" style="color: red;">@item.DanhMuc.TenDanhMuc</h4>
+                    <li><a href="#"> <img src="~/Content/Layout/images/star2.png" alt=""><br />(@item.NgayDang)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,112 @@
+﻿@using ChiaSeCode_TH.Models;
+@model NguoiDung
+@{
+    NguoiDung ses = (NguoiDung)Session["NguoiDung"];
+    NguoiDung sesad = (NguoiDung)Session["Admin"];
+}
+<div class="header">
+    <div class="col-sm-8 header-left">
+        <div class="logo">
+            <a href="/HienThi/Index" style="text-decoration: none;"><b><i class="fas fa-keyboard" style="color: green; font-size: 35px;"></i><span style="color: red; font-size: 35px">F</span><span style="color: #4267b2; font-size: 20px;">ree</span><span style="color: green; font-size: 35px;">C</span><span style="color: #4267b2; font-size: 20px;">ode</span></b></a>
+        </div>
+        <div class="menu">
+            <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
+            <ul class="nav" id="nav">
+                <li><a href="/HienThi/Index">Trang chủ</a></li>
+                <li class="active"><a href="/LocCode/CodeMoi">Tất cả code</a></li>
+                <li><a href="/TinTuc/TrangChuTinTin">Tin tức</a></li>
+                <li><a href="404.html">Liên hệ</a></li>
+                <div class="clearfix"></div>
+            </ul>
+            <script type="text/javascript" src="js/responsive-nav.js"></script>
+        </div>
+
+        <!-- start search-->
+        <div class="search-box">
+            <div id="sb-search" class="sb-search">
+                <form action="@Url.Action("KqTimKiem","TimKiem")" method="post">
+                    <input class="sb-search-input" placeholder="Nhập code muốn tìm..." type="search" name="txtTK" id="search">
+                    <input class="sb-search-submit" type="submit" value="">
+                    <span class="sb-icon-search"> </span>
+                </form>
+            </div>
+        </div>
+        <!----search-scripts---->
+        <script src="~/Content/Layout/js/classie.js"></script>
+        <script src="~/Content/Layout/js/uisearch.js"></script>
+        <script>
+            new UISearch(document.getElementById('sb-search'));
+        </script>
+        <!----//search-scripts---->
+        <div class="clearfix"></div>
+    </div>
+    <div class="col-sm-4 header_right">
+        @if (ses != null)
+        {
+            <div id="loginContainer">
+                <b style="color: white"><i class="fa fa-user">&nbsp;</i><span>Chào: @ses.TenHienThi</span></b>
+                <b style="color: white">|</b>
+                <a href="/DangXuat/DangXuatNguoiDung"><b style="color: white"><i class="fas fa-sign-out-alt">&nbsp;</i>Đăng xuất</b></a>
+            </div>
+        }
+        else if (sesad != null)
+        {
+            <div id="loginContainer">
+                <b style="color: white"><i class="fa fa-user">&nbsp;</i><span>Chào: @sesad.TenHienThi</span></b>
+                <b style="color: white">|</b>
+                <a href="/DangXuat/DangXuatAdmin"><b style="color: white"><i class="fas fa-sign-out-alt">&nbsp;</i>Đăng xuất</b></a>
+            </div>
+        }
+        else
+        {
+            <div id="loginContainer">
+                <a href="#" data-toggle="modal" data-target="#myModal" style="text-decoration: none"><i class="fas fa-sign-in-alt" style="color: white">&nbsp;</i><span>Đăng nhập</span></a>&nbsp;
+                <a href="/DangKy/DangKy" style="text-decoration: none"><i class="fa fa-user" style="color: white">&nbsp;</i><span>Đăng ký</span></a>
+            </div>
+
+
+        }
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form action="@Url.Action("DangNhap", "DangNhap")" method="post">
+                <center><b><i class="fas fa-keyboard" style="color: green; font-size: 40px;"></i><span style="color: red; font-size: 40px">F</span><span style="color: #4267b2; font-size: 25px;">ree</span><span style="color: green; font-size: 40px;">C</span><span style="color: #4267b2; font-size: 25px;">ode</span></b></center>
+                <center><b style="font-size: 25px;"><i class="fas fa-sign-in-alt">&nbsp;</i>Đăng nhập</b></center>
+                <br />
+                <center style="font-size:15px;"><b>Bạn chưa có tài khoản! <a href="#" style="text-decoration: none; color: green;">Đăng ký ngay</a></b></center>
+                <center style="margin-top: 5%">
+                    <input type="email" class="form-control" style="width: 60%" required placeholder="Nhập vào Email của bạn..." name="txtTaiKhoan" />
+                    <br />
+                    <input type="password" class="form-control" style="width: 60%" required placeholder="Nhập vào mật khẩu của bạn" name="txtMatKhau" />
+                    <br />
+                    <button class="btn btn-danger" style="width: 60%">Đăng nhập</button>
+                    <br />
+                </center>
+                <b style="margin-left: 20%"><i>Quên mật khẩu?</i></b>
+            </form>
+            <br />
+            <div class="alert alert-danger">
+                <center> <b>Lợi ích của thành viên</b></center>
+                <ol>
+                    <li>Tải và chia sẽ code của mình.</li>
+                    <li>Tham gia Event.</li>
+                    <li>Khi chia sẻ, nếu code hay admin FreeCode sẽ mua.</li>
+                    <li>Làm quen với nhiều lập trình viên.</li>
+                    <li>Tham gia học hỏi, xem code của thành viên khác.</li>
+                </ol>
+                <b style="float: right; color: red">Admin</b>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

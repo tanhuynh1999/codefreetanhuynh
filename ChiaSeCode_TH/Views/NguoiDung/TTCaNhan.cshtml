@@ -1,0 +1,17 @@
+﻿@using ChiaSeCode_TH.Models;
+@model NguoiDung
+@{
+    NguoiDung ses = (NguoiDung)Session["NguoiDung"];
+}
+<center><h3>Thông tin cá nhân</h3></center>
+<div style="border: dashed 1px"></div>
+<ul style="margin-top: 3%">
+    <li style="font-weight: bold"><span style="color: black"><i class="fa fa-user">&nbsp;</i>Tên hiển thị:</span> <span style="color: green">@ses.TenHienThi</span></li>
+    <li style="font-weight: bold"><span style="color: black"><i class="fa fa-mail-bulk">&nbsp;</i>Email:</span> <span style="color: green">@ses.Email</span></li>
+    <li style="font-weight: bold"><span style="color: black"><i class="fa fa-phone">&nbsp;</i>Số điện thoại:</span> <span style="color: green">@ses.SoDienThoai</span></li>
+</ul>
+<b class="btn btn-default" style="width: 100%; margin-top: 1%">Đã chia sẻ: @Html.Action("DaChiaSe", "QLCode", new { @manguoidung = ses.MaNguoiDung }) code</b>
+<b class="btn btn-default" style="width: 100%; margin-top: 1%">Game: 0 code</b>
+<b class="btn btn-default" style="width: 100%; margin-top: 1%">Website: 0 code</b>
+<b class="btn btn-default" style="width: 100%; margin-top: 1%">App windown: 0 code</b>
+<b class="btn btn-default" style="width: 100%; margin-top: 1%">Mobile: 0 code</b>

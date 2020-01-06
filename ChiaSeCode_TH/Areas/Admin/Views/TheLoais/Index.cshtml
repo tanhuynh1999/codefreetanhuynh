@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ChiaSeCode_TH.Models.TheLoai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/LayoutAdmin/LayoutAdmin.cshtml";
+}
+
+<table class="table table-striped" style="margin-top: 6%">
+    <tr>
+        <th>
+            <b class="control-label col-md-2" style="color:saddlebrown"><i class="fas fa-align-justify">&nbsp;</i>Phân loại</b>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTheLoai)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaTheLoai }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaTheLoai })
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Admin/TheLoais/Create" class="btn btn-danger" style="margin-left:45%"><b>Thêm phân loại</b></a>
+

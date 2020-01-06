@@ -1,0 +1,36 @@
+﻿@using ChiaSeCode_TH.Models;
+@model NguoiDung
+@{
+    NguoiDung ses = (NguoiDung)Session["NguoiDung"];
+}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: #4267b2;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <br />
+                <div style="margin-left: 20%; margin-top: 10%">
+                    <h3 style="color: white; float: left;"><i class="fa fa-user">&nbsp;</i>Tên hiển thị: <span style="color: bisque;">@ses.TenHienThi</span></h3>
+                    <br /><br />
+                    <h3 style="color: white; float: left;"><i class="fas fa-file-signature">&nbsp;</i>Tên: <span style="color: bisque;">@ses.Ten</span></h3>
+                    <br /><br />
+                    <h3 style="color: white; float: left;"><i class="fas fa-envelope">&nbsp;</i>Email: <span style="color: bisque;">@ses.Email</span></h3>
+                    <br /><br />
+                    <h3 style="color: white; float: left;"><i class="fas fa-phone">&nbsp;</i>Số điện thoại: <span style="color: bisque;">@ses.SoDienThoai</span></h3>
+                    <br /><br />
+                    <h3 style="color: white; float: left;"><i class="fas fa-code-branch">&nbsp;</i>Đã chia sẻ: <span style="color: bisque;">@Html.Action("DaChiaSe", "QLCode", new {@manguoidung = ses.MaNguoiDung }) Code</span></h3>
+                    <br />
+                    <div style="margin-top: 30%"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <a href="@Url.Action("SuaTT", "ThongTinCaNhan",new {@id = ses.MaNguoiDung })" class="btn btn-danger"><b>Cập nhật thông tin</b></a>
+            </div>
+        </div>
+    </div>
+</div>

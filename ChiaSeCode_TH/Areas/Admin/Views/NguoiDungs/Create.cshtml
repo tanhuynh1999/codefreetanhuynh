@@ -1,0 +1,58 @@
+﻿@model ChiaSeCode_TH.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/LayoutAdmin/LayoutAdmin.cshtml";
+}
+
+@Html.Action("MenuAD", "HienThiAdmin")
+<iframe src="/Admin/NguoiDungs/Index" style="width: 100%; height: 380px; margin-top: 1%"></iframe>
+<div id="Xem" style="margin-top: 2%">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div>
+                <div class="form-group" style="width:50%; float: left">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fas fa-mail-bulk">&nbsp;</i>Email<b style="color: red;">*</b></b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="width:50%; float: right">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-user">&nbsp;</i>Vai trò<b style="color: red;">*</b></b>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaVaiTro", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaVaiTro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group" style="width:50%; float: right">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-key">&nbsp;</i>Mật khẩu<b style="color: red;">*</b></b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" style="width:50%; float: left">
+                    <b class="control-label col-md-2" style="color:saddlebrown"><i class="fa fa-keyboard">&nbsp;</i>Nhập lại mật khẩu<b style="color: red;">*</b></b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NhapLaiMatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group container">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thêm" class="btn btn-danger" style="width: 50%; margin-left: 35%; margin-top: 3%" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

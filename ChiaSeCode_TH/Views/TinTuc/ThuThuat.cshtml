@@ -1,0 +1,26 @@
+﻿@using ChiaSeCode_TH.Models;
+@model List<TinTuc>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-6">
+        <div class="grid1">
+            <a href="@Url.Action("XemChiTietTinTuc", "TinTuc", new {@matintuc = item.MaTinTuc })">
+                <div class="index_img1"><img src="@Url.Content("~/HinhAnh/"+item.AnhTinTuc)" class="img-responsive" alt="" style="width: 100%; height: 220px" /></div>
+            </a>
+            <div class="inner_wrap1">
+                <ul class="item_module">
+                    <li class="module_right">
+                        <h5>@item.TenTinTuc</h5>
+                        <p>
+                            <b><i class="fa fa-eye">&nbsp;</i>@item.LuotXemTinTuc</b>
+                            <b>@item.NgayDangTinTuc</b>
+                        </p>
+                        <a href="#" class="content_btn">....Xem</a>
+                    </li>
+                    <div class="clearfix"> </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+}

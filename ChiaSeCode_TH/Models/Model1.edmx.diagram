@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a4b79d99543e4eec80ce6f1a30e9d12a" Name="Diagram1">
+        <EntityTypeShape EntityType="FreeCodeModel.BinhLuan" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.Code" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.DanhMuc" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.NguoiDung" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.TheLoai" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.TheLoaiTinTuc" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.TinTuc" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.TraLoiBinhLuan" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeCodeModel.VaiTro" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="FreeCodeModel.FK_BinhLuan_Code" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_BinhLuan_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_TraLoiBinhLuan_BinhLuan" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_Code_DanhMuc" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_Code_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_Code_TheLoai" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_NguoiDung_VaiTro" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_TinTuc_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_TraLoiBinhLuan_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeCodeModel.FK_TinTuc_TheLoaiTinTuc" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

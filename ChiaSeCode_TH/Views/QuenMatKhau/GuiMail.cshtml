@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "GuiMail";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+<!--Menu-->
+@Html.Action("MenuNo", "HienThi")
+<!--//Menu-->
+<!--Thanh công cụ-->
+@Html.Action("ThanhCongCu", "HienThi")
+<!--//Thanh công cụ-->
+<!--Giao diện trang chủ-->
+<div class="content_middle">
+    <div class="container">
+        <div class="content_middle_box">
+
+            <div class="living_middle">
+                <div class="container" style="margin-top: -8%">
+                    <div class="col-md-4 wow fadeInLeft" data-wow-delay="0.4s">
+
+                        <ul class="feature">
+                            <li>
+                                <div class="alert alert-danger">
+                                    <center><b style="color: green">Lợi ích của thành viên FreeCode</b></center>
+                                    <ol>
+                                        <li>Tải và chia sẽ code của mình.</li>
+                                        <li>Tham gia Event.</li>
+                                        <li>Khi chia sẻ, nếu code hay admin FreeCode sẽ mua.</li>
+                                        <li>Làm quen với nhiều lập trình viên.</li>
+                                        <li>Tham gia học hỏi, xem code của thành viên khác.</li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                        <ul class="feature">
+                            <li>
+                                <div class="alert alert-danger">
+                                    <center><b style="color: green">Thống kê thành viên</b></center>
+                                    <ul>
+                                        <li>Số thành viên:<span>0</span></li>
+                                        <li>Số thành viên Online:<span>0</span></li>
+                                        <li>Số lượt truy cập: <span>0</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                        <ul class="feature last_grid">
+                            <li>
+                                <div class="alert alert-success">
+                                    <center><a class="btn btn-danger" data-toggle="modal" data-target="#myModal"><b>ĐĂNG NHẬP</b></a></center>
+                                </div>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    @*Phải*@
+                    <div class="col-md-8 wow fadeInRight" data-wow-delay="0.4s">
+                        <div class="alert alert-success">
+                            <h2 style="color: brown">Khôi phục mật khẩu?</h2>
+                            <center><h4 style="color: black">Hãy nhập email bạn đã đăng kí, FreeCode sẽ gửi đường link tạo mật khẩu mới vào email của bạn.</h4></center>
+                            <form action="@Url.Action("GuiMail", "QuenMatKhau")" method="post">
+                                <b>Email đăng nhập</b>
+                                <input type="email" name="EmailNhan" class="form-control" placeholder="Vui lòng nhập gmail..." required />
+                                <p style="color: red">@ViewBag.Status</p>
+                                <br />
+                                <center> <input type="submit" value="Lấy lại mật khẩu" class="btn btn-danger" /></center>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.Action("TrangChu2", "HienThi")
+            <div class="top_grid wow fadeInRight" data-wow-delay="0.4s">
+                @Html.Action("TatCaCodeWebsite", "LocCode")
+                <div class="clearfix"> </div>
+                @Html.Action("TatCaCodeGame", "LocCode")
+                <div class="clearfix"> </div>
+                @Html.Action("TatCaCodeUngDung", "LocCode")
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        @Html.Action("ChanTK", "HienThi")
+    </div>
+</div>
+@Html.Action("ChanTrang", "HienThi")
+
+<div class="modal fade" id="exampleModalqq" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="@Url.Action("DangNhap", "DangNhap")" method="post">
+                <center><b><i class="fas fa-keyboard" style="color: green; font-size: 40px;"></i><span style="color: red; font-size: 40px">F</span><span style="color: #4267b2; font-size: 25px;">ree</span><span style="color: green; font-size: 40px;">C</span><span style="color: #4267b2; font-size: 25px;">ode</span></b></center>
+                <center><b style="font-size: 25px;"><i class="fas fa-sign-in-alt">&nbsp;</i>Đăng nhập</b></center>
+                <br />
+                <center style="font-size:15px;"><b>Bạn chưa có tài khoản! <a href="#" style="text-decoration: none; color: green;">Đăng ký ngay</a></b></center>
+                <center style="margin-top: 5%">
+                    <input type="email" class="form-control" style="width: 60%" required placeholder="Nhập vào Email của bạn..." name="txtTaiKhoan" />
+                    <br />
+                    <input type="password" class="form-control" style="width: 60%" required placeholder="Nhập vào mật khẩu của bạn" name="txtMatKhau" />
+                    <br />
+                    <button class="btn btn-danger" style="width: 60%">Đăng nhập</button>
+                    <br />
+                </center>
+                <a href="@Url.Action("GuiMail", "QuenMatKhau")" style="margin-left: 20%; color:orange"><i>Quên mật khẩu?</i></a>
+            </form>
+            <br />
+            <div class="alert alert-danger">
+                <center> <b>Lợi ích của thành viên</b></center>
+                <ol>
+                    <li>Tải và chia sẽ code của mình.</li>
+                    <li>Tham gia Event.</li>
+                    <li>Khi chia sẻ, nếu code hay admin FreeCode sẽ mua.</li>
+                    <li>Làm quen với nhiều lập trình viên.</li>
+                    <li>Tham gia học hỏi, xem code của thành viên khác.</li>
+                </ol>
+                <b style="float: right; color: red">Admin</b>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
